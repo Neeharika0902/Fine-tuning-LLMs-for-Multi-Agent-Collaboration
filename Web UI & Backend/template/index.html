@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Agent Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="header">
+        <h1>Multi-Agent Chatbot</h1>
+        <div class="user-controls">
+            <span class="welcome-message">Welcome, {{ username }}</span>
+            <button id="reset-button">Reset Chat</button>
+            <a href="{{ url_for('logout') }}" class="logout-button">Logout</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="chat-container" id="chat-container">
+            <div class="message agent-message">
+                <div class="agent-name">MAC System</div>
+                <div class="message-content">
+                    Hello {{ username }}! I'm your multi-agent assistant. I can help with:
+                    <ul>
+                        <li>Generating SQL queries for data analysis</li>
+                        <li>Creating Python code for your requirements</li>
+                        <!-- <li>Providing QA testing for code validation</li> -->
+                    </ul>
+                    What would you like to do today?
+                </div>
+            </div>
+        </div>
+
+        <div class="loading" id="loading">
+            <div class="dots"><span>.</span><span>.</span><span>.</span></div>
+            <div>Processing your request...</div>
+        </div>
+
+        <div class="input-container">
+            <input type="text" id="user-input" placeholder="Type your message..." autocomplete="off">
+            <button id="send-button">Send</button>
+        </div>
+    </div>
+
+    <div class="footer">
+        MAC Team 3
+    </div>
+
+    <script>
+        // Pass user info to JavaScript
+        const userInfo = {
+            username: "{{ username }}",
+            userId: "{{ user_id }}"
+        };
+    </script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
